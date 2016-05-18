@@ -5,9 +5,9 @@
 int main(void)
 {
 FILE *fu;
-int ch,length,s,tcost,sel,mov,p,g,si,che,i,line=2; /*if line=1 password incorrect*/
+int ch,tt,s,tcost,sel,mov,p,g,si,che,i,line=3; /*if line=1 password incorrect*/
 float t;
-char city[15],log[25],pass[25],str[25];
+char log[25],pass[25],str[25];
 clrscr();
 printf("Login id\n");
 scanf("%s",log);
@@ -41,12 +41,25 @@ goto error;
 
 
 
-printf("Cities\nChennai\tCoimbatore\n");
-printf("Enter your city:\n");
-scanf("%s",city);
-length = strlen(city);
+printf("Cities\n1.Coimbatore\t2.Chennai\n");
+printf("Enter your option for the city:\n");
+scanf("%d",&tt);
+switch(tt)
+{
+case 1:
+printf("Coimbatore\n");
+break;
+case 2:
+printf("Chennai\n");
+break;
+default:
+printf("Wrong selection\n");
+goto error;
+}
+/*length = strlen(city);
 //printf("%d",length);
-if(length==10)                                /*theatre */
+*/
+if(tt==1)                                /*theatre */
 {
 printf("1.Kg Cinemas\n");
 printf("2.The Cinemas Brookes\n");
@@ -68,9 +81,12 @@ break;
 case 4:
 printf("Sarvam\n");
 break;
+default:
+printf("Wrong Selection\n");
+goto error;
 }
 }
-else if(length==7)
+else if(tt==2)
 {
 printf("1.Sathyam Cinemas\n");
 printf("2.Mayajal\n");
@@ -91,6 +107,9 @@ break;
 case 4:
 printf("Imax\n");
 break;
+default:
+printf("Wrong Selection\n");
+goto error;
 }
 }
 printf("Movies\n");                                   /*Movies */
@@ -113,6 +132,9 @@ break;
 case 5:
 printf("Baaghi(hindi)\n");
 break;
+default:
+printf("Wrong Selection\n");
+goto error;
 }                                                       /*Timings */
 printf("Show timings\n");
 printf("10.00am\t12.00pm\t3.00pm\t9.00pm\n");
@@ -133,6 +155,10 @@ printf("3.00pm show\n");
 else if(t==9.00)
 {
 printf("9.00pm show\n");
+}
+else
+{
+goto error;
 }
 printf("Number of seats:\n");                              /*Seats */
 scanf("%d",&s);
@@ -169,7 +195,7 @@ for(p=1;p<=s;p++)
 printf("P%d\n",p);
 }
 printf("Selected time: %.2f\n",t);
-tcost=150*s;
+tcost=150*s;                                         /*Platinum = 150rs */
 printf("Total cost: %d",tcost);
 break;
 case 2:
@@ -194,7 +220,7 @@ printf("Gold\n");
 printf("Seats:\n");
 for(g=1;g<=s;g++)
 {
-printf("G%d\n",g);
+printf("G%d\n",g);                                   /*Gold = 150rs */
 }
 printf("Selected time: %.2f\n",t);
 tcost=110*s;
@@ -221,18 +247,18 @@ printf("Imax\n");
 printf("Silver\n");
 printf("Seats:\n");
 for(si=1;si<=s;si++)
-{
+{                                                      /*Silver = 150rs */
 printf("S%d\n",si);
 }
-printf("Selected time: %.2f\n",t);
+printf("Selected time:%.2f\n",t);
 tcost=100*s;
 printf("Total cost:%d",tcost);
 break;
 default:
 printf("Booking Failed\n");
-printf("Cash refunded");
+//printf("Cash refunded\n");
 error:
-printf("Try again\n");
+printf("Try again");
 }
 fclose(fu);					     /*Mission completed */
 getch();
