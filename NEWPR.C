@@ -9,7 +9,7 @@ int ch,tt,s,tcost,sel,mov,p,g,si,che,i,line=3; /*if line=1 password incorrect*/
 float t;
 char log[25],pass[25],str[25];
 clrscr();
-printf("Login id\n");
+printf("Login id\n");                                                             /*Login section*/
 scanf("%s",log);
 //printf("Password\n");
 //scanf("%s",pass);
@@ -41,7 +41,7 @@ goto error;
 
 
 
-printf("Cities\n1.Coimbatore\t2.Chennai\n");
+printf("Cities\n1.Coimbatore\t2.Chennai\n");                               /*City selection */
 printf("Enter your option for the city:\n");
 scanf("%d",&tt);
 switch(tt)
